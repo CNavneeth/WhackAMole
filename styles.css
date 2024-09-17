@@ -10,11 +10,13 @@ body {
     background-image: url('bg.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 .container {
     text-align: center;
     position: relative;
+    z-index: 1;
 }
 
 @keyframes colorChange {
@@ -46,6 +48,8 @@ body {
 h1 {
     margin-bottom: 20px;
     font-size: 50px;
+    color: white;
+    text-shadow: 2px 2px 5px #000;
 }
 
 .game-board {
@@ -67,6 +71,12 @@ h1 {
     align-items: center;
     cursor: pointer;
     position: relative;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.hole:hover {
+    background-color: #f1c40f;
 }
 
 .mole {
@@ -81,6 +91,18 @@ h1 {
 button {
     padding: 10px 20px;
     font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
+    transform: scale(1.05);
 }
 
 #score {
@@ -92,13 +114,13 @@ button {
 footer {
     width: 100%;
     text-align: center;
-    background-color: rgb(1, 1, 1,0.87);
+    background-color: rgba(0, 0, 0, 0.87);
     color: white;
     font-size: 20px;
     padding: 10px 0;
     position: absolute;
     bottom: 0;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .start {
@@ -110,7 +132,7 @@ footer {
   color: #FFFFFF;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -144,10 +166,12 @@ footer {
 }
 
 .mole {
-    width: 200px;
-    height: 185px;
+    width: 80px;
+    height: 80px;
+    background-color: brown;
+    border-radius: 50%;
     position: absolute;
-    z-index: -1;
-    margin-top: 35%;
-    right: 0;
+    top: 10px;
+    z-index: 2;
 }
+
