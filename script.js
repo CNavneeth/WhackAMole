@@ -6,8 +6,8 @@ function whackMole(index) {
     if (index === activeMole) {
         score++;
         document.getElementById("score").innerText = "Score: " + score;
+        removeMole();
         activeMole = null;
-        document.querySelector(".mole").remove();
     }
 }
 
@@ -18,24 +18,31 @@ function startGame() {
 
     gameInterval = setInterval(() => {
         if (activeMole !== null) {
-            document.querySelector(".mole").remove();
+            removeMole();
         }
 
         activeMole = Math.floor(Math.random() * 9);
         const moleElement = document.createElement("div");
         moleElement.classList.add("mole");
         document.getElementById(`hole${activeMole}`).appendChild(moleElement);
-    }, 1000);
+    }, 1000);  // Change mole every second
 
-    setTimeout(endGame, 30000);
+    setTimeout(endGame, 30000);  // Game ends after 30 seconds
 }
 
 function endGame() {
     clearInterval(gameInterval);
     document.querySelector(".start").disabled = false;
     if (activeMole !== null) {
-        document.querySelector(".mole").remove();
+        removeMole();
     }
     activeMole = null;
     alert("Game over! Your score is " + score);
+}
+
+function removeMole() {
+    const mole = document.querySelector(".mole");
+    if (mole) {
+        mole.remove();
+    }
 }
